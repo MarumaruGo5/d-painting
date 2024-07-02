@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>うちの子のデジタル似顔絵</title>
-    <style>うちの子のデジタル似顔絵
+    <style>
         /* 默认样式 */
         img, video {
             max-width: 100%;
@@ -13,7 +13,7 @@
             margin: 0 auto;
             object-fit: contain;
         }
-       /* 视频容器样式 */
+        /* 视频容器样式 */
         .video-container {
             position: relative;
             margin: 0 auto;
@@ -44,6 +44,46 @@
     <img src="./图片3/（五箇加筆）うちの子のデジタル似顔絵_single link_Goka review_v0.1_01.jpg" alt="图片1">
     <img src="./图片3/（五箇加筆）うちの子のデジタル似顔絵_single link_Goka review_v0.1_02.jpg" alt="图片2">
     <img src="./图片3/（五箇加筆）うちの子のデジタル似顔絵_single link_Goka review_v0.1_03.jpg" alt="图片3">
+    <!-- 视频部分 -->
+    <div class="video-container">
+        <video id="myVideo" controls>
+            <source src="视频1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="cover" onclick="playVideo()">Open</div>
+    </div>
+
+    <script>
+        // 获取视频元素
+        var video = document.getElementById('myVideo');
+        // 播放视频函数
+        function playVideo() {
+            video.play();
+            // 视频开始播放时，隐藏封面
+            document.querySelector('.cover').style.display = 'none';
+        }
+        // 视频结束时重新显示封面
+        video.addEventListener('ended', function() {
+            document.querySelector('.cover').style.display = 'block';
+        });
+        // 视频关闭函数
+        function stopVideo() {
+            video.pause();
+            video.currentTime = 0;
+            // 视频停止播放时，显示封面
+            document.querySelector('.cover').style.display = 'block';
+        }
+        // 添加关闭按钮
+        var closeButton = document.createElement('button');
+        closeButton.innerText = 'Close';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '10px';
+        closeButton.style.zIndex = '10';
+        closeButton.onclick = stopVideo;
+        video.parentNode.insertBefore(closeButton, video);
+    </script>
+    <!-- 图片部分 -->
     <img src="./图片3/（五箇加筆）うちの子のデジタル似顔絵_single link_Goka review_v0.1_04.jpg" alt="图片4">
     <img src="./图片3/（五箇加筆）うちの子のデジタル似顔絵_single link_Goka review_v0.1_05.jpg" alt="图片5">
     <img src="./图片3/（五箇加筆）うちの子のデジタル似顔絵_single link_Goka review_v0.1_06.jpg" alt="图片6">
